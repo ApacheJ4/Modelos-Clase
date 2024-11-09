@@ -1,0 +1,7 @@
+<form action="" method="post">
+    {% csrf_token %}
+
+    <p>Seguro que quieres eliminar {{post.titulo}}??</p>
+    <input type="submit" value="Delete">
+
+</form>

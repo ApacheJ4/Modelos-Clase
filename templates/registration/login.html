@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Login</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .login-container {
+      max-width: 400px;
+      width: 100%;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 2px solid #c00;
+    }
+    .login-container h2 {
+      text-align: center;
+      color: #c00;
+      margin-bottom: 20px;
+    }
+    .login-container form p {
+      margin-bottom: 15px;
+    }
+    .login-container input[type="text"],
+    .login-container input[type="password"],
+    .login-container input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .login-container input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #c00;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .login-container input[type="submit"]:hover {
+      background-color: #a00;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Log in</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+</body>
+</html>

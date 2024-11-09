@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #c00;
+            max-width: 600px;
+            width: 100%;
+        }
+        h2, h3 {
+            color: #c00;
+            margin-bottom: 20px;
+        }
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #c00;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #a00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if user.is_authenticated %}
+        <h2>Hola, {{ user.username }}</h2>
+        <p>Último inicio de sesión: {% if last_login %}{{ last_login|date:"H:i, d M Y" }}{% else %}No disponible{% endif %}</p>
+        <a href="{% url 'post' %}">NASA Marketplace</a>
+        {% else %}
+        <h2>Si no tienes ninguna cuenta</h2>
+        <h3>Ingresa tu usuario</h3>
+        <a href="{% url 'login' %}">Log in</a>
+        <h3>Regístrate</h3>
+        <a href="{% url 'signup' %}">Sign up</a>
+        {% endif %}
+    </div>
+</body>
+</html>

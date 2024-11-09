@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Interactiva</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      padding: 15px 30px;
+      border-bottom: 2px solid #c00;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .navbar a, .logout-button {
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1rem;
+      margin: 0 15px;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+    .navbar a:hover, .logout-button:hover {
+      color: #c00;
+    }
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #c00;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+    .nav-item {
+      list-style: none;
+    }
+    .nav-item a {
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .nav-item a:hover {
+      background-color: #f0f0f0;
+    }
+    /* Ocultar el formulario de logout real */
+    #logout-form {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">NASA Marketplace</div>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="{% url 'pagina_principal' %}">Home</a></li>
+      <li class="nav-item"><a href="{% url 'post' %}">Posts</a></li>
+      <li class="nav-item"><a href="{% url 'create' %}">Create</a></li>
+      <li class="nav-item"><span class="logout-button" onclick="document.getElementById('logout-form').submit();">Logout</span></li>
+    </ul>
+  </nav>
+
+  <!-- Formulario oculto para el logout -->
+  <form id="logout-form" method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+  </form>
+
+</body>
+</html>

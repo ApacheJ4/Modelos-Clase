@@ -1,10 +1,87 @@
+{% include 'navbar.html' %}
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicación de Productos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .product-card {
+      background-color: white;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+    .product-image {
+      width: 100%;
+      max-height: 300px;
+      overflow: hidden;
+    }
+    .product-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .product-details {
+      padding: 20px;
+    }
+    .product-title {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .product-description {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>Publicación de Productos</h1>
+  {% for post in post_list %}
 
-{% for i in post_list %}
+  <div class="container">
+    <!-- Producto 1 -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="imagen1.jpg" alt="Producto 1">
+      </div>
+      <div class="product-details">
+        <h2 class="product-title"><a href="{% url 'detail' post.pk %}">{{post.titulo}}</a></h2>
+        <p class="product-description">{{post.descripcion}}</p>
+      </div>
+    </div>
 
-    <h1>{{i.titulo}}</h1>
-    <br>
-    <p>{{i.descripcion}}</p>
-    <hr>
-    
-{% endfor %}
+  {% endfor %}
+</body>
+</html>
+
+<a href="{% url 'usuarios' %}">Dashboard de usuarios</a>
